@@ -4,9 +4,9 @@ from pymongo import MongoClient
 from datetime import datetime
 
 # Connect to MongoDB (update the connection string, db name, and collection as needed)
-client = MongoClient("YOUR_CONNECTION_STRING")
-db = client["your_db_name"]
-users_collection = db["users"]
+client = MongoClient('mongodb+srv://dzheng4m:cGqGXWHSHFQRxSRZ@cluster0.06nr7.mongodb.net/')
+database = client['SecurityFilterDb']
+users_collection = database["users"]
 
 # Configure the page
 st.set_page_config(
