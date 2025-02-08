@@ -124,16 +124,7 @@ st.markdown(hero_html, unsafe_allow_html=True)
 st.markdown('<div class="section">', unsafe_allow_html=True)
 st.subheader("📝 Daily Lesson")
 lesson_content = """
-Today’s lesson is about **Phishing Attacks**.
-
-Phishing is a form of cyber attack where attackers impersonate legitimate institutions to steal sensitive information such as usernames, passwords, and credit card details.
-
-### Key Points:
-- Phishing attacks usually come in the form of emails or websites that look legitimate.
-- Look for unusual language or spelling errors in the emails.
-- Always check the URL before entering personal details.
-
-Stay vigilant and protect yourself from falling into these traps!
+ADD CHAT GPT STUFF 
 """
 st.markdown(lesson_content, unsafe_allow_html=True)
 st.markdown('</div>', unsafe_allow_html=True)
@@ -143,7 +134,7 @@ st.markdown('<div class="section">', unsafe_allow_html=True)
 st.subheader("❓ Quiz: Test Your Knowledge")
 
 # Define quiz questions and answers
-quiz_questions = [
+'''quiz_questions = [
     {
         "question": "What is Phishing?",
         "options": [
@@ -171,7 +162,7 @@ for i, quiz in enumerate(quiz_questions):
     st.markdown(f"### Question {i + 1}: {quiz['question']}")
     for option in quiz['options']:
         st.radio(f"{quiz['question']}", quiz['options'], key=f"question_{i + 1}")
-
+'''
 st.markdown('</div>', unsafe_allow_html=True)
 
 # Footer section
