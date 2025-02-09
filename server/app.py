@@ -23,10 +23,18 @@ def generate_content():
     web_content = data.get("data")
 
     # print(web_content)
+    prompt = """
+        Analyze this image and/or text for any inappropriate, harmful, or offensive elements. 
+        Look for explicit content, violence, hate speech, threats, self-harm, illegal activity, misinformation, profanity, 
+        and any graphic material. Provide a reason for your determination. 
+        Additionally, analyze this text/image and determine if it is AI-generated. 
+        Look for signs such as unnatural phrasing, repetitive structure, inconsistencies, visual artifacts, 
+        or metadata indicating AI origin. Provide a confidence score and an explanation for your determination.
+    """
 
     try:
         response = client.models.generate_content(
-            model="gemini-2.0-flash", contents=["", web_content]
+            model="gemini-2.0-flash", contents=[prompt, web_content]
         )
         print(response.text)
         return jsonify({"response": response.text})
