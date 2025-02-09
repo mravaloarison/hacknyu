@@ -177,7 +177,8 @@ if st.session_state.show_login and not st.session_state.authenticated:
                     st.session_state.authenticated = True
                     st.session_state.user_email = login_email
                     st.success("Logged In!")
-                    st.switch_page("pages/1_dashboard.py")
+                    # Set query parameter to indicate authentication
+                    st.experimental_set_query_params(logged_in=True)
 
 # SIGN-UP FORM
 if st.session_state.show_signup:
@@ -233,3 +234,13 @@ features_html = """
 </div>
 """
 st.markdown(features_html, unsafe_allow_html=True)
+
+# Check if the user is authenticated via query params
+query_params = st.experimental_get_query_params()
+
+if "logged_in" in query_params and query_params["logged_in"][0] == "true":
+    st.write(f"Welcome, {st.session_state.user_email}!")
+    # You can redirect the user to the dashboard here
+    # Display dashboard or other protected content
+else:
+    st.write("Please log in to access the content.")
