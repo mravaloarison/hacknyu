@@ -1,13 +1,12 @@
 chrome.action.onClicked.addListener(async function () {
 	const screenshotUrl = await chrome.tabs.captureVisibleTab();
-	const viewTabUrl = chrome.runtime.getURL("screenshot.html");
+	const viewTabUrl = chrome.runtime.getURL("test.html");
+
 	let targetId = null;
 
 	chrome.tabs.onUpdated.addListener(function listener(tabId, changedProps) {
 		if (tabId != targetId || changedProps.status != "complete") return;
-
 		chrome.tabs.onUpdated.removeListener(listener);
-
 		chrome.tabs.sendMessage(tabId, {
 			msg: "screenshot",
 			data: screenshotUrl,
