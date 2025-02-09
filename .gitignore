@@ -1,2 +1,4 @@
 server/.env.local
 server/.env
+server/sp.py
+server/models.py
