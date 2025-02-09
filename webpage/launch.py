@@ -1,10 +1,11 @@
+import os
 import streamlit as st
 import streamlit.components.v1 as components
 from pymongo import MongoClient
 from datetime import datetime
 
 # Connect to MongoDB (update the connection string, db name, and collection as needed)
-client = MongoClient('mongodb+srv://dzheng4m:cGqGXWHSHFQRxSRZ@cluster0.06nr7.mongodb.net/')
+client = MongoClient(os.getenv("MONGO_URL"))
 database = client['SecurityFilterDb']
 users_collection = database["users"]
 
@@ -165,6 +166,9 @@ if st.session_state.show_login:
             if not login_email.endswith("@gmail.com") or len(login_email) <= 6:
                 st.warning("Please enter a valid @gmail.com email address longer than 6 characters.")
             else:
+                # Normalize the email (convert to lowercase)
+                login_email = login_email.lower()
+                
                 # Query the database for the user
                 user = users_collection.find_one({"email": login_email})
                 if not user:
@@ -190,6 +194,9 @@ if st.session_state.show_signup:
             elif signup_password != confirm_password:
                 st.warning("Passwords do not match")
             else:
+                # Normalize the email (convert to lowercase)
+                signup_email = signup_email.lower()
+
                 # Check if the email already exists in the database
                 existing_user = users_collection.find_one({"email": signup_email})
                 if existing_user:
