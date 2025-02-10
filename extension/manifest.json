@@ -6,7 +6,8 @@
       "service_worker": "sw.js"
     },
     "action": {
-      "default_title": "Take a screen shot!"
+      "default_title": "Take a screen shot!",
+      "default_popup": "popup.html"
     },
     "permissions": ["activeTab"],
     "manifest_version": 3
